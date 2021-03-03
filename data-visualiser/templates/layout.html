@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <!-- Include the data adapter -->
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-base.min.js"></script>
+    <!--CDN stuff-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--jQuery-->
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!--Bootstrap JS-->
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+        crossorigin="anonymous"></script>
+    {% block scripts %}{% endblock %}
+    <!--Local stuff-->
+    <script defer src={{ url_for('static', filename='js/main.js')}}></script>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/main.css')}}>
+
+    <title>Data Visualiser</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand"><img src={{ url_for('static', filename='images/data.ico')}} /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload.html">Upload Dataset</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Worldmap.html">Covid-19 World Heat Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/MoreInfo.html">More Covid-19 Information</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="jumbotron text-center">
+        {% block header %}{% endblock %}
+    </header>
+    <main class="container">
+        <section class="row" id="tablerow">
+            <div class="col-sm-12" id="tablediv">
+                {% block main %}{%endblock%}
+                {% block results_main %}{%endblock%}
+            </div>
+        </section>
+        <section class="row" id="chartrow">
+            <div class="col-sm-12" id="container">
+                {% block chart %}{%endblock%}
+            </div>
+        </section>
+    </main>
+</body>
+<footer class="container">
+    <p><em>Copyright &copy; 2020 Data Visualiser.</em></p>
+</footer>
+
+</html>

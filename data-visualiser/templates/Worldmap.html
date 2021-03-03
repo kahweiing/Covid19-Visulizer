@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block header %}
+<h1>Coronavirus Dashboard</h1>
+<h2>Live COVID Data visualised</h2>
+{% endblock %}
+{% block main %}
+<main class="container">
+   <div class="row">
+      <div class="column">
+         <h3>Top Covid Country</h3>
+         <table class="table-responsive-sm table-dark">
+            <thead>
+               <tr>
+                  <th scope="col">Country</th>
+                  <th scope="col">Confirmed
+               </tr>
+               </tr>
+            </thead>
+            <tbody>
+               {% for pair in pairs %}
+               <tr>
+                  <td>{{ pair[0]}}</td>
+                  <td>{{ pair[1]}}</td>
+               </tr>
+               <tr>
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+      <div class="column" style="background-color:#bbb;">
+         {{ content | safe }}
+      </div>
+   </div>
+</main>
+{% endblock %}

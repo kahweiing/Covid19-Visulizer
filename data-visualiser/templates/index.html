@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{%block header %}
+<h1>Data Visualiser</h1>
+<h2>Making big data smaller</h2>
+{% endblock %}
+
+{% block main %}
+<section id="features">
+    <h2>Our Features!</h2>
+    <div class="row">
+    <article class="col-sm">
+        <h3>Upload your own data</h3>                    
+        <figure>
+            <img class="img-thumbnail" id="Upload" src={{ url_for('static', filename='images/UploadYourOwnData.jpg')}} alt="Upload Your Own Data">
+        </figure>
+        <p>
+            Upload any data you want! No restrictions!
+        </p>
+    </article>
+    <article class="col-sm">
+        <h3>See the data you want</h3>
+        <figure>
+            <img class="img-thumbnail" id="See" src={{ url_for('static', filename='images/SeeTheDataYouWant.jpg')}} alt="See the data you want"/>
+        </figure>
+        <p>
+            You get the choice to see all of your data or the data that you want to see!
+        </p>
+    </article>
+    </div>
+</section>
+<section id="features2">
+    <div class="row">
+    <article class="col-sm">
+        <h3>Visuals</h3>
+        <figure>
+            <img class="img-thumbnail" id="graph" src={{ url_for('static', filename='images/Graph.jpg')}} alt="Graph"/>
+        </figure>
+        <p>
+            You get the option to see raw data or a graph of your selected data!
+        </p>
+    </article>
+    <article class="col-sm">
+        <h3>Export</h3>
+        <figure>
+            <img class="img-thumbnail" id="export" src={{ url_for('static', filename='images/export.jpg')}} alt="Export"/>
+        </figure>
+        <p>
+            Once you're happy with your selected data, you can export it again!
+        </p>
+    </article>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+    <!-- {{ super() }} -->
+    <script defer src={{ url_for('static', filename='js/selectData.js')}}></script>
+{% endblock %}
+
+{% block header %}
+<h1>Your Data Has Been Uploaded!</h1>
+<h2>Select the data that you want to view</h2>
+{% endblock %}
+
+{% block results_main %}
+<form action="/uploaded.html" method="POST" enctype="multipart/form-data">
+    <h3>Select Data Points for your X axis:(Date is recommended)</h3>
+    <div class="form-group">
+        <select name="xaxis" class="custom-select" required>
+            <option selected disabled hidden>Choose:..</option>
+            {% for item in items %}
+            <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <h3 id="ytext">Select Data Points for your Y axis:</h3>
+    <div id ="sectionForm" class="form-group">
+        {% for item in items %}
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Data" value="{{item}}">
+            <label class="form-check-label" for="Data">{{item}}</label>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="btncontainer">
+        <div class="center">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

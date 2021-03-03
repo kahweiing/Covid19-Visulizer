@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+<!-- {{ super() }} -->
+<script defer src={{ url_for('static', filename='js/uploaded.js')}}></script>
+{% endblock %}
+
+{% block header %}
+<h1>Here's your data!</h1>
+<h2>That wasn't so hard was it?</h2>
+<div class="btncontainer">
+    <div class="center">
+        <a href="{{ url_for('exporttocsv') }}" class="btn btn-primary">Export CSV</button>
+        <a href="{{ url_for('exporttoexcel') }}" class="btn btn-primary">Export Excel</a>
+    </div>
+</div>
+<div class="btncontainer">
+    <div class="center">
+        <label for="togBtn" id="chartmode">Chart Mode:</label>
+        <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"></div></label>
+    </div>
+</div>
+{% endblock %}
+
+{% block results_main %}
+{{ content | safe }}
+{% endblock %}
+
+{% block chart %}
+{{ line | safe }}
+{{ chart | safe }}
+{{ stack | safe }}
+{% endblock %}

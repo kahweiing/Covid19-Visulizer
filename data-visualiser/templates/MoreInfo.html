@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block header %}
+<h1>Covid-19 Detailed Dashboard</h1>
+<h2>Up-to-date Data Set</h2>
+{% endblock %}
+{% block main %}
+<main class="container">
+      <div class="column">
+         <article>
+             <p>Total cases as of Today: {{ totalcases | safe }}</p>
+             <p>World Daily Average: {{ average | safe }}</p>
+             <p>Active Cases: {{ totalactive | safe }}</p>
+             <p>Total Recovered: {{ totalrecovered | safe }}</p>
+             <p>Total Death: {{ totaldeath | safe }}</p>
+             <hr>
+             <form name="Item_1" action="MoreInfo.html" method='POST'>
+                <select name=country method="GET" action="/">
+                    {% for countryNames in country %}'
+                    <option value= "{{countryNames}}" SELECTED>{{countryNames}}</option>"
+                    {% endfor %}
+                </select>
+                <button type="submit">Check!</button>
+                 <br>
+                <input type="radio" name="typeofdata" value="totalCountryCases" checked> Total number of cases for selected country
+                 <br>
+                <input type="radio" name="typeofdata" value="averageCountryCases"> Average number of cases for selected country
+                 <br>
+            </form>
+             <p>{{ countryGroup | safe }} {{ selectedResult | safe }}</p>
+         </article>
+      </div>
+    <h3 align="center">Check the amount of covid cases by date</h3>
+                  <form name="Item_2" action="MoreInfo.html" method='POST'>
+            <select name=date method="GET" action="/">
+                 {% for ListofDate in date %}'
+                 <option value= "{{ListofDate}}" SELECTED>{{ListofDate}}</option>"
+                 {% endfor %}
+                 <br>
+          </select>
+                   <button type="submit">Check!</button>
+                  </form>
+          <p>{{ dateGroup | safe }} {{ selectedResult1 | safe }}</p>
+</main>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block header %}
+<h1>Dataset Upload</h1>
+<h2>Upload dataset using the upload below</h2>
+{% endblock %}
+
+{% block main %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<form action="/selectData.html" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" name="dataupload" id="dataupload" required>
+            <label class="custom-file-label" for="dataupload">Select File</label>
+        </div>
+    </div>
+    <div class="btncontainer">
+        <div class="center">
+            <button id="button" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    <img class="load" id="picture" src={{ url_for('static', filename='images/load.gif')}}/ >
+</form>
+{% endblock %}
